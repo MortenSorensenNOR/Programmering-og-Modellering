@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{c+c1}{\PYGZsh{} Variabler for simulering}
+        \PYG{n}{simulerings\PYGZus{}tid} \PYG{o}{=} \PYG{l+m+mi}{48} \PYG{c+c1}{\PYGZsh{} Antall uker modellen simuleres}
+        \PYG{n}{dt} \PYG{o}{=} \PYG{l+m+mf}{0.01} \PYG{c+c1}{\PYGZsh{} Tidssteget i simuleringen \PYGZhy{} brøkdel av en uke}
+
+        \PYG{k}{def} \PYG{n+nf}{smitte\PYGZus{}modell}\PYG{p}{(}\PYG{n}{smitte\PYGZus{}koeffisient}\PYG{p}{):}
+            \PYG{n}{tid} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{simulerings\PYGZus{}tid}\PYG{p}{,} \PYG{n}{dt}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Tids array}
+            \PYG{n}{I} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{))} \PYG{c+c1}{\PYGZsh{} Smitte array}
+            \PYG{n}{I}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{c+c1}{\PYGZsh{} Initialiserer antall smittede ved t = 0 til 1}
+
+            \PYG{k}{for} \PYG{n}{t} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{)):}
+                \PYG{c+c1}{\PYGZsh{} Regner ut vekstfarten og legger det til forrige smittetall}
+                \PYG{n}{smitte} \PYG{o}{=} \PYG{n}{smitte\PYGZus{}koeffisient} \PYG{o}{*} \PYG{n}{I}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{*} \PYG{n}{dt}
+                \PYG{n}{I}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{I}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{smitte}
+
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{,} \PYG{n}{I}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

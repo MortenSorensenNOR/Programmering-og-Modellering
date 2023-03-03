@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{c+c1}{\PYGZsh{} Variabler for simulering}
+        \PYG{n}{P} \PYG{o}{=} \PYG{l+m+mi}{157759} \PYG{c+c1}{\PYGZsh{} Populasjons størrelsen}
+        \PYG{n}{dt} \PYG{o}{=} \PYG{l+m+mf}{0.01} \PYG{c+c1}{\PYGZsh{} Tidssteget i simuleringen \PYGZhy{} brøkdel av en uke}
+        \PYG{n}{simulerings\PYGZus{}tid} \PYG{o}{=} \PYG{l+m+mi}{48} \PYG{c+c1}{\PYGZsh{} Antall uker modellen simuleres}
+
+        \PYG{c+c1}{\PYGZsh{} Influensa data}
+        \PYG{n}{influensa\PYGZus{}data} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{loadtxt}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}./influensa.txt\PYGZdq{}}\PYG{p}{,} \PYG{n}{delimiter}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{},\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{influensa\PYGZus{}tid} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{n}{influensa\PYGZus{}data}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{influensa\PYGZus{}smitte} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{n}{influensa\PYGZus{}data}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{p}{]}
+
+        \PYG{k}{def} \PYG{n+nf}{smitte\PYGZus{}modell}\PYG{p}{(}\PYG{n}{smitte\PYGZus{}koeffisient}\PYG{p}{,} \PYG{n}{bedrings\PYGZus{}koeffisient}\PYG{p}{):}
+            \PYG{c+c1}{\PYGZsh{} Arrayer for simuleringsdata}
+            \PYG{n}{tid} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{simulerings\PYGZus{}tid}\PYG{p}{,} \PYG{n}{dt}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Tids array}
+            \PYG{n}{I} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{))} \PYG{c+c1}{\PYGZsh{} Smitte array}
+            \PYG{n}{S} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{))} \PYG{c+c1}{\PYGZsh{} Mottakelige (\PYGZdq{}suseptables\PYGZdq{}) array}
+            \PYG{n}{I}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{c+c1}{\PYGZsh{} Initialiserer antallet smittede ved t = 0 til 1}
+            \PYG{n}{S}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{P} \PYG{o}{\PYGZhy{}} \PYG{n}{I}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Initialiserer antallet mottakelige til 157758}
+
+            \PYG{k}{for} \PYG{n}{t} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{)):}
+                \PYG{c+c1}{\PYGZsh{} Regner ut vekstfarten til smittetallet og vekstfarten til}
+                \PYG{c+c1}{\PYGZsh{} hvor mange som blir friske og legger til differansen på}
+                \PYG{c+c1}{\PYGZsh{} smittetallet og trekker smitten fra antallet mottakelige}
+                \PYG{n}{smitte} \PYG{o}{=} \PYG{n}{smitte\PYGZus{}koeffisient} \PYG{o}{*} \PYG{n}{S}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{/}\PYG{n}{P} \PYG{o}{*} \PYG{n}{I}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{*} \PYG{n}{dt}
+                \PYG{n}{frisk} \PYG{o}{=} \PYG{n}{bedrings\PYGZus{}koeffisient} \PYG{o}{*} \PYG{n}{I} \PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{*} \PYG{n}{dt}
+                \PYG{n}{I}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{I}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{p}{(}\PYG{n}{smitte} \PYG{o}{\PYGZhy{}} \PYG{n}{frisk}\PYG{p}{)}
+                \PYG{n}{S}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{S}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{smitte}
+
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tid}\PYG{p}{,} \PYG{n}{I}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{influensa\PYGZus{}tid}\PYG{p}{,} \PYG{n}{influensa\PYGZus{}smitte}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

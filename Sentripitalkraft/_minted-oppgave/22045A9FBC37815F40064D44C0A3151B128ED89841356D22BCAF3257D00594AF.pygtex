@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k+kn}{from} \PYG{n+nn}{labquest} \PYG{k+kn}{import} \PYG{n}{LabQuest}
+
+        \PYG{n}{lq} \PYG{o}{=} \PYG{n}{LabQuest}\PYG{p}{()}
+        \PYG{n}{lq}\PYG{o}{.}\PYG{n}{open}\PYG{p}{()}
+        \PYG{n}{lq}\PYG{o}{.}\PYG{n}{select\PYGZus{}sensors}\PYG{p}{(}\PYG{n}{ch1}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}lq\PYGZus{}sensor\PYGZsq{}}\PYG{p}{,} \PYG{n}{dig1}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}photogate\PYGZus{}count\PYGZsq{}}\PYG{p}{)}
+
+        \PYG{n}{t} \PYG{o}{=} \PYG{l+m+mi}{10000}   \PYG{c+c1}{\PYGZsh{} Måletiden gitt i millisekunder}
+        \PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{500}     \PYG{c+c1}{\PYGZsh{} Antall målinger}
+
+        \PYG{n}{lq}\PYG{o}{.}\PYG{n}{start}\PYG{p}{(}\PYG{n}{t}\PYG{o}{/}\PYG{n}{n}\PYG{p}{)}   \PYG{c+c1}{\PYGZsh{} Perioden mellom målinger i millisekunder}
+        \PYG{n}{dig1\PYGZus{}header} \PYG{o}{=} \PYG{n}{lq}\PYG{o}{.}\PYG{n}{enabled\PYGZus{}sensor\PYGZus{}info}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}dig1\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

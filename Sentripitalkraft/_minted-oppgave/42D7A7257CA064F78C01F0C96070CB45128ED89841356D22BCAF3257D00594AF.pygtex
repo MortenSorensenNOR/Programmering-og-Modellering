@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{dig1\PYGZus{}measurement} \PYG{o}{=} \PYG{n}{lq}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}dig1\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{ch1\PYGZus{}measurement} \PYG{o}{=} \PYG{n}{lq}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}ch1\PYGZsq{}}\PYG{p}{)}
+            \PYG{k}{if} \PYG{n}{dig1\PYGZus{}measurement} \PYG{o}{==} \PYG{k+kc}{None} \PYG{o+ow}{or} \PYG{n}{ch1\PYGZus{}measurement} \PYG{o}{==} \PYG{k+kc}{None}\PYG{p}{:}
+                \PYG{k}{break}
+            \PYG{k}{if} \PYG{n}{dig1\PYGZus{}measurement} \PYG{o}{!=} \PYG{n}{prev\PYGZus{}dig1\PYGZus{}measurement}\PYG{p}{:}
+                \PYG{n}{file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{dig1\PYGZus{}measurement} \PYG{o}{\PYGZhy{}} \PYG{n}{prev\PYGZus{}dig1\PYGZus{}measurement}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{l+s+s1}{                    }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{ch1\PYGZus{}measurement}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{start}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+                \PYG{n}{prev\PYGZus{}dig1\PYGZus{}measurement} \PYG{o}{=} \PYG{n}{dig1\PYGZus{}measurement}
+\end{Verbatim}

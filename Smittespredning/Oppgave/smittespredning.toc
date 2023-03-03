@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Enkel modell $I_{t+1} = I_t + \alpha I_t$}{2}{}%
+\contentsline {section}{\numberline {2}Begrenset smittemottakelige $I_{t+1} = I_t + \alpha I_t S_t$}{5}{}%
+\contentsline {section}{\numberline {3}Mulighet for å bli frisk $I_{t+1} = I_t + \alpha I_t S_t - \beta I_t$}{7}{}%
+\contentsline {section}{\numberline {4}Vaksinering}{9}{}%
+\contentsline {section}{\numberline {5}Julekoeffisient}{10}{}%

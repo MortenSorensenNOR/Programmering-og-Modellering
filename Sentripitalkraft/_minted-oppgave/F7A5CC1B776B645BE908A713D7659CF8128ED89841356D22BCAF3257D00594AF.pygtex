@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{n}{scipy}\PYG{o}{.}\PYG{n}{signal}\PYG{o}{.}\PYG{n}{savgol\PYGZus{}filter}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{window\PYGZus{}length}\PYG{p}{,} \PYG{n}{polyorder}\PYG{p}{)}
+\end{Verbatim}

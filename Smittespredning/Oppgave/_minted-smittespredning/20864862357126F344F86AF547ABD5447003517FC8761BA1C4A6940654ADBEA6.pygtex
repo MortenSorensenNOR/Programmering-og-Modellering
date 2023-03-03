@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{\PYGZsh{} Koden for å regne ut antal \PYGZdq{}Susceptibles\PYGZdq{} S(t)}
+    \PYG{k}{def} \PYG{n+nf}{S}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{immune}\PYG{p}{,} \PYG{n}{vaksinerte}\PYG{p}{,} \PYG{n}{tid}\PYG{p}{,} \PYG{n}{\PYGZus{}julekoeffisient}\PYG{p}{):}
+        \PYG{n}{julekoeffisient} \PYG{o}{=} \PYG{l+m+mi}{1}
+        \PYG{c+c1}{\PYGZsh{} Hvis den nåværende uken er i romjulen}
+        \PYG{k}{if} \PYG{l+m+mi}{13} \PYG{o}{\PYGZlt{}} \PYG{n}{tid}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o+ow}{and} \PYG{n}{tid}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{14}\PYG{p}{:}
+            \PYG{n}{julekoeffisient} \PYG{o}{=} \PYG{n}{\PYGZus{}julekoeffisient}
+        \PYG{k}{return} \PYG{n}{julekoeffisient} \PYG{o}{*} \PYG{p}{(}\PYG{n}{P} \PYG{o}{\PYGZhy{}} \PYG{n}{immune}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{vaksinerte}\PYG{p}{[}\PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{/}\PYG{n}{P}
+\end{Verbatim}
